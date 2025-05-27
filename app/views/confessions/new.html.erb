@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "confession_modal" do %>
+  <%= render "confession_modal", title: "Write your confession" do %>
+    <%= render "form", confession: @confession %>
+  <% end %>
+<% end %>

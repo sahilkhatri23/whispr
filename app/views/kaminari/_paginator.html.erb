@@ -1,0 +1,14 @@
+<nav role="navigation" class="flex justify-center mt-8">
+  <ul class="inline-flex space-x-2">
+    <% paginator.each_page do |page| %>
+      <% if page.left_outer? || page.right_outer? || page.inside_window? %>
+        <li>
+          <%= link_to page, url_for(page: page),
+            class: "px-3 py-1 rounded-md text-sm font-medium #{page.current? ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition" %>
+        </li>
+      <% elsif !page.was_truncated? %>
+        <li><span class="px-3 py-1 text-gray-400">…</span></li>
+      <% end %>
+    <% end %>
+  </ul>
+</nav>
