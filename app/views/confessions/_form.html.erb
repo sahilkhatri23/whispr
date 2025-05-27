@@ -9,19 +9,16 @@
               },
               class: "space-y-4" do |f| %>
 
-  <% if confession.errors.any? %>
-    <div class="text-red-500">
-      <ul>
-        <% confession.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div>
+    <%= f.text_area :body,
+        rows: 4,
+        placeholder: "Max 500 characters...",
+        class: "w-full p-2 border border-gray-300 rounded resize-none" %>
 
-  <%= f.text_area :body, rows: 4, placeholder: "Max 500 characters...",
-      class: "w-full p-2 border border-gray-300 rounded resize-none",
-      maxlength: 500 %>
+    <% if @confession.errors[:body].any? %>
+      <p class="text-sm text-red-500 pl-0.5"><%= @confession.errors[:body].first %></p>
+    <% end %>
+  </div>
 
   <div class="flex justify-end gap-2">
     <%= link_to "Cancel", "", data: { action: "click->modal#close" }, class: "text-gray-500 hover:text-gray-700 pt-2" %>

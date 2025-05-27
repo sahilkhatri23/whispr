@@ -74,3 +74,5 @@ gem 'request_store'
 
 # For rate limiting
 gem 'rack-attack'
+
+gem 'kaminari'

@@ -1,6 +1,6 @@
 class ConfessionsController < ApplicationController
   def index
-    @confessions = Confession.order(created_at: :desc).limit(50)
+    @confessions = Confession.includes(:reactions).order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def new
@@ -17,8 +17,7 @@ class ConfessionsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "form", locals: { confession: @confession }) }
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end

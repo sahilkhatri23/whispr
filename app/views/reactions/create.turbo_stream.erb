@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "confession_#{@confession.id}_reactions" do %>
+  <span class="text-gray-500">💬 <%= @confession.reactions.count %> Reactions</span>
+<% end %>

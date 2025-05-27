@@ -6,6 +6,10 @@
       <div id="confessions_grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <%= render partial: "confessions/confession", collection: @confessions, as: :confession %>
       </div>
+
+      <div class="mt-8 flex justify-center" data-turbo="false">
+        <%= paginate @confessions %>
+      </div>
     <% else %>
       <div class="text-center text-gray-500 text-lg py-12">
         🕊️ Be the first to share a confession!
